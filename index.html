@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>◊ FallEstatePaper · sovereign UK estate + letting agent document generator · AST · S21 · S8 · Prescribed Info</title>
+<meta name="description" content="Sovereign UK estate and letting agent document generator. Sole/multi agency agreements, Memorandum of Sale, AST, Lodger, Prescribed Information, Section 21 (Form 6A), Section 8, S13 rent increase, inventory, inspection. Single HTML. Client data never leaves device.">
+<meta name="prime" content="907">
+<meta name="theme-color" content="#0b0a0f">
+<link rel="manifest" href='data:application/manifest+json,{"name":"FallEstatePaper","short_name":"estatepaper","start_url":"./","display":"standalone","background_color":"%230b0a0f","theme_color":"%238b1a1a","icons":[{"src":"data:image/svg+xml;utf8,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 192 192%27><rect width=%27192%27 height=%27192%27 fill=%27%230b0a0f%27 rx=%2828%27/><text x=%2796%27 y=%27138%27 font-family=%27Georgia, serif%27 font-size=%27124%27 font-weight=%27700%27 text-anchor=%27middle%27 fill=%27%238b1a1a%27>%E2%97%8A</text></svg>","sizes":"192x192","type":"image/svg+xml"}]}'>
+<style>
+:root{
+  --void:#0b0a0f;--void-2:#13121a;--ink:#1a1922;--ink-2:#22212c;
+  --line:#2a2934;--line-soft:#1f1e28;
+  --cream:#e6e1d6;--cream-dim:#a8a395;--cream-muted:#6e6a5e;
+  --brass:#b8974a;--amber:#ff8c00;--ox:#8b1a1a;--ox-2:#6e1414;
+  --green:#4ade80;--red:#ef4444;--blue:#60a5fa;--yellow:#fbbf24;
+  --paper:#f3eee2;--paper-ink:#1a1611;--paper-rule:#cfc7b3;
+  --serif:'Libre Baskerville',Georgia,ui-serif,serif;
+  --sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --mono:'IBM Plex Mono','SF Mono',ui-monospace,Menlo,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:var(--void);color:var(--cream);font:14px/1.55 var(--sans);min-height:100dvh;-webkit-font-smoothing:antialiased}
+button{font-family:inherit;cursor:pointer;background:transparent;border:none;color:inherit}
+input,textarea,select{font-family:inherit;background:var(--ink);border:1px solid var(--line);color:var(--cream);border-radius:3px;padding:7px 10px;outline:none;font-size:13px}
+input:focus,textarea:focus,select:focus{border-color:var(--brass)}
+textarea{resize:vertical;min-height:80px;font-family:var(--mono);font-size:12px;line-height:1.5}
+a{color:var(--brass)}a:hover{color:var(--amber)}
+
+.app{min-height:100dvh;display:grid;grid-template-rows:48px 1fr}
+header{display:flex;align-items:center;border-bottom:1px solid var(--line);background:var(--void-2);user-select:none}
+.brand{display:flex;align-items:center;gap:10px;padding:0 16px;height:100%;border-right:1px solid var(--line)}
+.brand .mark{width:28px;height:28px;background:linear-gradient(135deg,var(--ox),var(--ox-2));border-radius:5px;display:grid;place-items:center;font-family:var(--serif);font-weight:700;font-size:16px;color:var(--cream)}
+.brand .name{font-family:var(--serif);font-weight:600;font-size:14px;letter-spacing:0.02em}
+.brand .seal{font-family:var(--mono);font-size:9px;color:var(--cream-muted);letter-spacing:0.18em;text-transform:uppercase}
+
+nav.tabs{display:flex;flex:1;overflow-x:auto;align-items:stretch}
+nav.tabs button{padding:0 16px;font-size:12px;color:var(--cream-dim);letter-spacing:0.04em;display:flex;align-items:center;gap:6px;border-right:1px solid var(--line-soft);height:100%;white-space:nowrap;border-top:2px solid transparent}
+nav.tabs button:hover{background:var(--ink);color:var(--cream)}
+nav.tabs button.active{background:var(--ink);color:var(--brass);border-top-color:var(--brass)}
+
+.tools-r{display:flex;align-items:center;gap:5px;padding:0 14px;height:100%;border-left:1px solid var(--line)}
+.tool-btn{padding:5px 11px;border-radius:3px;font-size:11px;color:var(--cream-dim);letter-spacing:0.06em;text-transform:uppercase;font-family:var(--mono);border:1px solid var(--line)}
+.tool-btn:hover{background:var(--ink);color:var(--cream);border-color:var(--brass)}
+.tool-btn.primary{background:var(--brass);color:var(--void);border-color:var(--brass);font-weight:600}
+.tool-btn.primary:hover{background:var(--amber);border-color:var(--amber)}
+
+main{padding:18px 22px 60px;overflow-y:auto;max-width:1320px;margin:0 auto;width:100%}
+
+.disclaimer{background:rgba(139,26,26,0.15);border:1px solid var(--ox);border-left:3px solid var(--ox);border-radius:3px;padding:12px 16px;margin-bottom:18px;font-size:12px;color:var(--cream)}
+.disclaimer strong{color:var(--brass)}
+
+.section-h{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;gap:14px;flex-wrap:wrap}
+.section-h h2{font-family:var(--serif);font-size:18px;font-weight:600;letter-spacing:0.01em}
+.section-h .sub{font-family:var(--mono);font-size:11px;color:var(--cream-muted);letter-spacing:0.08em;text-transform:uppercase}
+.section-h .actions{display:flex;gap:6px;flex-wrap:wrap}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media (max-width:760px){.grid-2,.grid-3{grid-template-columns:1fr}}
+.card{background:var(--void-2);border:1px solid var(--line);border-radius:4px;padding:16px 18px}
+.card h3{font-family:var(--serif);font-size:14px;font-weight:600;margin-bottom:10px;color:var(--cream);letter-spacing:0.01em}
+.card h3 .meta{font-family:var(--mono);font-size:10px;color:var(--brass);letter-spacing:0.1em;margin-left:8px}
+
+.kpi{display:flex;justify-content:space-between;align-items:baseline;padding:6px 0;border-bottom:1px dashed var(--line-soft);font-size:13px}
+.kpi:last-child{border-bottom:none}
+.kpi .l{color:var(--cream-dim)}
+.kpi .v{font-family:var(--mono);color:var(--cream);font-weight:500}
+.kpi .v.green{color:var(--green)}.kpi .v.amber{color:var(--amber)}.kpi .v.brass{color:var(--brass)}.kpi .v.red{color:var(--red)}
+
+.row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:8px}
+.field label{display:block;font-family:var(--mono);font-size:10px;color:var(--cream-muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:3px}
+.field input,.field select,.field textarea{width:100%}
+.field .hint{font-size:10px;color:var(--cream-muted);margin-top:3px;font-family:var(--mono)}
+
+.btn{padding:7px 14px;border:1px solid var(--brass);border-radius:3px;font-size:12px;color:var(--cream);background:transparent;letter-spacing:0.04em;cursor:pointer}
+.btn:hover{border-color:var(--amber);color:var(--amber)}
+.btn.primary{background:var(--ox);color:var(--cream);border-color:var(--ox);font-weight:600}
+.btn.primary:hover{background:var(--ox-2);border-color:var(--ox-2)}
+.btn.brass{background:var(--brass);color:var(--void);border-color:var(--brass);font-weight:600}
+.btn.brass:hover{background:var(--amber);border-color:var(--amber);color:var(--void)}
+.btn.danger:hover{border-color:var(--red);color:var(--red)}
+.btn.sm{padding:4px 9px;font-size:11px}
+.btn.ghost{border-color:var(--line);color:var(--cream-dim)}
+.btn.ghost:hover{border-color:var(--brass);color:var(--brass)}
+
+table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+th,td{padding:7px 10px;border-bottom:1px solid var(--line-soft);text-align:left}
+th{color:var(--brass);font-family:var(--mono);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600}
+td.r{text-align:right;font-family:var(--mono)}
+
+.tag{display:inline-block;padding:2px 7px;border-radius:11px;font-family:var(--mono);font-size:10px;letter-spacing:0.06em;text-transform:uppercase;border:1px solid var(--brass);color:var(--brass);margin-right:4px}
+.tag.green{border-color:var(--green);color:var(--green)}
+.tag.amber{border-color:var(--amber);color:var(--amber)}
+.tag.red{border-color:var(--red);color:var(--red)}
+.tag.blue{border-color:var(--blue);color:var(--blue)}
+.tag.muted{border-color:var(--line);color:var(--cream-muted)}
+
+.doc-stage{display:grid;grid-template-columns:280px 1fr;gap:14px}
+@media (max-width:920px){.doc-stage{grid-template-columns:1fr}}
+.doc-side{display:flex;flex-direction:column;gap:10px}
+.paper{background:var(--paper);color:var(--paper-ink);font-family:var(--serif);font-size:13px;line-height:1.7;padding:48px 56px;border-radius:4px;box-shadow:0 6px 28px rgba(0,0,0,0.55);min-height:600px;max-width:820px;margin:0 auto;width:100%}
+@media (max-width:600px){.paper{padding:28px 22px;font-size:12px}}
+.paper h1{font-family:var(--serif);font-size:22px;font-weight:700;text-align:center;margin-bottom:6px;letter-spacing:0.02em}
+.paper h2{font-family:var(--serif);font-size:16px;font-weight:700;margin:22px 0 8px;border-bottom:1px solid var(--paper-rule);padding-bottom:4px;color:#3a1e10}
+.paper h3{font-family:var(--serif);font-size:14px;font-weight:700;margin:16px 0 6px;font-style:italic}
+.paper p{margin:8px 0;text-align:justify}
+.paper ul,.paper ol{margin:8px 0 8px 22px}
+.paper li{margin:3px 0}
+.paper .doc-meta{text-align:center;font-size:11px;color:#6a5a40;font-family:var(--mono);letter-spacing:0.08em;margin-bottom:18px}
+.paper .sig-block{margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:30px;font-size:12px}
+.paper .sig-line{border-bottom:1px solid var(--paper-ink);min-height:38px;margin-bottom:4px}
+.paper table{font-family:var(--sans);font-size:12px;color:var(--paper-ink);margin:10px 0}
+.paper th,.paper td{border:1px solid var(--paper-rule);padding:6px 9px;color:var(--paper-ink)}
+.paper th{background:#e6dec6;font-family:var(--sans);text-transform:none;letter-spacing:normal;color:#3a1e10;font-weight:700}
+.paper .clause-locked{background:#efe7d2;border-left:3px solid #8b1a1a;padding:8px 12px;margin:8px 0;font-size:12px}
+.paper .clause-locked::before{content:'◊ statutory wording · locked · ';font-family:var(--mono);font-size:9px;color:#8b1a1a;letter-spacing:0.08em;text-transform:uppercase}
+.paper .placeholder-empty{background:#ffe9b3;color:#8b1a1a;padding:0 4px;border-radius:2px;font-weight:700}
+.paper hr{border:none;border-top:1px solid var(--paper-rule);margin:14px 0}
+
+.tpl-list{display:flex;flex-direction:column;gap:5px}
+.tpl-row{padding:9px 12px;border:1px solid var(--line);border-radius:3px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:8px;background:var(--void-2)}
+.tpl-row:hover{border-color:var(--brass)}
+.tpl-row.active{border-color:var(--brass);background:var(--ink)}
+.tpl-row .nm{font-family:var(--serif);font-size:13px;color:var(--cream)}
+.tpl-row .sub{font-family:var(--mono);font-size:9px;color:var(--cream-muted);letter-spacing:0.08em;text-transform:uppercase}
+
+.row-pick{display:flex;justify-content:space-between;align-items:center;padding:8px 11px;border:1px solid var(--line);border-radius:3px;cursor:pointer;background:var(--void-2);gap:8px}
+.row-pick:hover{border-color:var(--brass)}
+.row-pick.active{border-color:var(--brass);background:var(--ink)}
+.row-pick .nm{font-family:var(--serif);font-size:13px}
+.row-pick .sub{font-family:var(--mono);font-size:10px;color:var(--cream-muted)}
+
+.section-edit{background:var(--ink);border:1px solid var(--line);border-radius:3px;padding:10px 12px;margin-bottom:8px}
+.section-edit .hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.section-edit .hd .nm{font-family:var(--serif);font-size:13px;color:var(--brass);font-weight:600}
+.section-edit .hd .tg{font-family:var(--mono);font-size:9px;color:var(--cream-muted);letter-spacing:0.08em;text-transform:uppercase}
+.section-edit textarea{width:100%;background:var(--void);border:1px solid var(--line-soft)}
+.section-edit.locked{border-color:var(--ox)}
+.section-edit.locked .nm::before{content:'◊ ';color:var(--ox)}
+.section-edit.locked textarea{opacity:0.7;cursor:not-allowed}
+
+.audit-row{padding:6px 10px;font-family:var(--mono);font-size:10px;color:var(--cream-dim);border-bottom:1px dashed var(--line-soft);display:grid;grid-template-columns:60px 110px 1fr 100px;gap:8px}
+.audit-row:hover{background:var(--ink)}
+
+.chat{display:flex;flex-direction:column;gap:10px;max-height:60vh;overflow-y:auto;padding:6px}
+.msg{padding:10px 14px;border-radius:6px;max-width:88%;font-size:13px;line-height:1.55;white-space:pre-wrap}
+.msg.user{background:var(--ink);align-self:flex-end;border-bottom-right-radius:2px}
+.msg.bot{background:var(--void-2);border:1px solid var(--line);border-left:2px solid var(--brass);align-self:flex-start;border-bottom-left-radius:2px}
+.msg.bot .src{font-family:var(--mono);font-size:10px;color:var(--cream-muted);letter-spacing:0.08em;margin-top:6px;padding-top:6px;border-top:1px dashed var(--line)}
+.chat-input{display:flex;gap:8px;margin-top:10px}
+.chat-input input{flex:1;padding:11px 14px}
+
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,0.7);display:none;align-items:center;justify-content:center;padding:18px;z-index:900;backdrop-filter:blur(4px)}
+.modal-bg.open{display:flex}
+.modal{background:var(--void-2);border:1px solid var(--brass);border-radius:4px;padding:22px;max-width:620px;width:100%;max-height:90vh;overflow:auto}
+.modal h2{font-family:var(--serif);font-size:17px;margin-bottom:14px}
+.modal .actions{display:flex;gap:8px;margin-top:16px;justify-content:flex-end;flex-wrap:wrap}
+
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--brass);color:var(--void);padding:9px 18px;border-radius:3px;font-family:var(--mono);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;font-weight:700;opacity:0;transition:all 0.22s;z-index:1100;pointer-events:none;max-width:80vw;text-align:center}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+.empty{padding:40px 22px;text-align:center;border:1px dashed var(--line);border-radius:4px;color:var(--cream-dim)}
+.empty h3{font-family:var(--serif);font-size:16px;color:var(--cream);margin-bottom:8px}
+.empty p{font-size:12px;margin:6px 0}
+
+.pill{display:inline-block;padding:2px 8px;border-radius:11px;font-family:var(--mono);font-size:9px;letter-spacing:0.1em;text-transform:uppercase}
+.pill.draft{background:var(--line);color:var(--cream-dim)}
+.pill.issued{background:rgba(184,151,74,0.2);color:var(--brass);border:1px solid var(--brass)}
+.pill.signed{background:rgba(74,222,128,0.15);color:var(--green);border:1px solid var(--green)}
+.pill.served{background:rgba(96,165,250,0.15);color:var(--blue);border:1px solid var(--blue)}
+
+.req-list{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.req-list .req{font-family:var(--mono);font-size:9px;padding:2px 6px;border-radius:11px;letter-spacing:0.05em;text-transform:uppercase}
+.req-list .req.ok{background:rgba(74,222,128,0.15);color:var(--green)}
+.req-list .req.miss{background:rgba(239,68,68,0.15);color:var(--red)}
+
+.preflight{background:var(--void-2);border:1px solid var(--line);border-radius:4px;padding:14px 16px;margin-bottom:12px}
+.preflight.pass{border-color:var(--green);border-left:3px solid var(--green)}
+.preflight.fail{border-color:var(--red);border-left:3px solid var(--red)}
+.preflight h4{font-family:var(--serif);font-size:13px;margin-bottom:8px}
+.preflight .chk{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px dashed var(--line-soft);font-size:12px}
+.preflight .chk:last-child{border-bottom:none}
+.preflight .chk .ok{color:var(--green);font-family:var(--mono);font-size:10px}
+.preflight .chk .miss{color:var(--red);font-family:var(--mono);font-size:10px}
+
+@media (max-width:760px){nav.tabs button{padding:0 11px;font-size:11px}main{padding:14px 14px 50px}.row,.row-3{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="app">
+<header>
+  <div class="brand">
+    <div class="mark">◊</div>
+    <div>
+      <div class="name" id="brandName">FallEstatePaper</div>
+    </div>
+    <div class="seal">v1 · prime 907</div>
+  </div>
+  <nav class="tabs" id="tabNav"></nav>
+  <div class="tools-r">
+    <button class="tool-btn" id="tierBadge" onclick="openModal('settings')">T0</button>
+    <button class="tool-btn" onclick="openModal('settings')">&#9881;</button>
+  </div>
+</header>
+
+<main id="view"></main>
+</div>
+
+<div class="modal-bg" id="modal">
+  <div class="modal">
+    <h2 id="modalTitle">&middot;</h2>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast">&middot;</div>
+
+<script>
+'use strict';
+const TOOLNAME='fallestatepaper',VERSION='1.0.0',PRIME=907,STORE='fallestatepaper-v1';
+const TABS=[{id:'templates',label:'templates'},{id:'generate',label:'generate'},{id:'documents',label:'documents'},{id:'firm',label:'firm'},{id:'clients',label:'clients'},{id:'qa',label:'Q&A'}];
+
+const TEMPLATE_DEFS=[
+  {id:'sole-agency',name:'Sole Agency Agreement',code:'SA-01',cat:'sales',desc:'Estate Agents Act 1979 compliant sole agency instruction for sale',
+   sections:[
+    {id:'parties',name:'Parties',locked:false,text:'This agreement is made between:\n\n**Agent:** {{firm.name}}, {{firm.address}} ({{firm.email}})\n\n**Client (Vendor):** {{client.name}}, {{client.address}}'},
+    {id:'property',name:'Property',locked:false,text:'**Property address:** {{property.address}}\n\n**Agreed asking price:** £{{property.price}}'},
+    {id:'terms',name:'Terms of Engagement',locked:false,text:'The Agent is appointed as **sole agent** for the sale of the above property.\n\nAgreement period: {{ctx.period}} from the date of signing.\n\nCommission rate: {{ctx.commissionRate}} of the final sale price, plus VAT where applicable.\n\nCommission becomes payable on exchange of contracts.'},
+    {id:'obligations',name:'Agent Obligations',locked:false,text:'The Agent will:\n- Market the property on relevant portals (Rightmove, Zoopla, OnTheMarket)\n- Conduct accompanied or unaccompanied viewings as agreed\n- Negotiate on the vendor\'s behalf\n- Provide regular feedback on viewings and offers\n- Comply with the Estate Agents Act 1979 and Consumer Protection from Unfair Trading Regulations 2008'},
+    {id:'ea1979',name:'Estate Agents Act 1979 Disclosure',locked:true,text:'In accordance with the Estate Agents Act 1979, section 18:\n\n(a) **"Sole agency"** means that if, during the period of sole agency, the vendor enters into a contract to sell the property as a result of the introduction of a buyer by any estate agent other than the Agent, the vendor will be liable to pay commission to both agents.\n\n(b) If the vendor finds a buyer without the involvement of any estate agent during the sole agency period, no commission will be payable.\n\n(c) The Agent has a duty to disclose any personal interest in the transaction.'},
+    {id:'sigs',name:'Signatures',locked:false,text:'[SIGNATURE_BLOCK]'},
+   ]},
+  {id:'multi-agency',name:'Multi Agency Agreement',code:'MA-01',cat:'sales',desc:'Multi-agent instruction with higher commission rate',
+   sections:[
+    {id:'parties',name:'Parties',locked:false,text:'This agreement is made between:\n\n**Agent:** {{firm.name}}, {{firm.address}}\n\n**Client (Vendor):** {{client.name}}, {{client.address}}'},
+    {id:'property',name:'Property',locked:false,text:'**Property:** {{property.address}}\n**Asking price:** £{{property.price}}'},
+    {id:'terms',name:'Terms',locked:false,text:'The Agent is appointed on a **multi-agency** basis.\n\nCommission rate: {{ctx.commissionRate}} of the final sale price (plus VAT).\n\nCommission is payable to the agent who introduces the successful buyer.'},
+    {id:'ea1979m',name:'EA 1979 — Multi Agency',locked:true,text:'In accordance with the Estate Agents Act 1979:\n\n**"Multi agency"** means the vendor has instructed more than one agent. Commission is payable only to the agent who introduces the buyer who subsequently exchanges contracts. If two agents claim the introduction, the vendor may be liable to pay both — please take independent legal advice.'},
+    {id:'sigs',name:'Signatures',locked:false,text:'[SIGNATURE_BLOCK]'},
+   ]},
+  {id:'memo-of-sale',name:'Memorandum of Sale',code:'MOS-01',cat:'sales',desc:'Confirmation of agreed sale terms for solicitors',
+   sections:[
+    {id:'header',name:'Header',locked:false,text:'**MEMORANDUM OF SALE**\n\nDate: {{ctx.date}}\nAgent ref: {{ctx.agentRef}}'},
+    {id:'property',name:'Property',locked:false,text:'**Property:** {{property.address}}'},
+    {id:'parties',name:'Parties',locked:false,text:'**Vendor:** {{ctx.vendorName}}\nVendor solicitor: {{ctx.vendorSolicitor}} ({{ctx.vendorSolicitorEmail}})\n\n**Buyer:** {{client.name}}\nBuyer solicitor: {{ctx.buyerSolicitor}} ({{ctx.buyerSolicitorEmail}})'},
+    {id:'terms',name:'Sale Terms',locked:false,text:'**Agreed price:** £{{ctx.agreedPrice}}\n**Tenure:** {{ctx.tenure}}\n**Fixtures/fittings:** per inventory\n**Target exchange:** {{ctx.targetExchange}}\n**Chain position:** {{ctx.chainPosition}}'},
+    {id:'note',name:'Note',locked:true,text:'This memorandum is issued for information only and does not constitute a legally binding agreement. The sale is not binding until exchange of contracts. Either party may withdraw at any time before exchange without liability.'},
+   ]},
+  {id:'ast',name:'Assured Shorthold Tenancy',code:'AST-01',cat:'lettings',desc:'Housing Act 1988 / Housing Act 1996 standard AST agreement',
+   sections:[
+    {id:'parties',name:'Parties',locked:false,text:'**Landlord:** {{ctx.landlordName}}, {{ctx.landlordAddress}}\n\n**Tenant:** {{client.name}}\n\n**Agent:** {{firm.name}}, {{firm.address}}'},
+    {id:'property',name:'Property',locked:false,text:'**Property:** {{property.address}}\n\n**Rent:** £{{property.rent}} per calendar month, payable in advance on the {{ctx.rentDay}} of each month\n\n**Deposit:** £{{ctx.depositAmount}} (protected with {{ctx.depositScheme}})'},
+    {id:'term',name:'Term',locked:false,text:'**Fixed term:** {{ctx.tenancyStart}} to {{ctx.tenancyEnd}}\n\nAfter the fixed term expires, this tenancy will continue as a statutory periodic tenancy on a month-to-month basis under the Housing Act 1988.'},
+    {id:'obligations-t',name:'Tenant Obligations',locked:true,text:'The Tenant agrees to:\n\n1. Pay the rent on or before the due date\n2. Keep the interior of the property in good condition and repair\n3. Not make any alterations without the Landlord\'s written consent\n4. Not cause nuisance or annoyance to neighbours\n5. Allow the Landlord or Agent access for inspection with at least 24 hours\' written notice\n6. Not assign, sublet, or part with possession without written consent\n7. Notify the Landlord or Agent promptly of any disrepair\n8. Comply with the terms of the EPC'},
+    {id:'obligations-l',name:'Landlord Obligations',locked:true,text:'The Landlord agrees to:\n\n1. Keep the structure and exterior in repair (Landlord and Tenant Act 1985, s.11)\n2. Keep installations for water, gas, electricity, and heating in repair and proper working order\n3. Provide a valid Gas Safety Certificate (annually)\n4. Provide a valid EPC (rating E or above per MEES)\n5. Provide a valid EICR (Electrical Installation Condition Report, every 5 years)\n6. Protect the deposit in a government-approved scheme within 30 days\n7. Serve the prescribed information within 30 days\n8. Comply with the Homes (Fitness for Human Habitation) Act 2018'},
+    {id:'deposit-clause',name:'Deposit Protection',locked:true,text:'The deposit of £{{ctx.depositAmount}} is held under the terms of the Housing Act 2004 in the {{ctx.depositScheme}}. Prescribed information has been served. The deposit will be returned within 10 working days of the tenancy ending, less any lawful deductions agreed by both parties or determined by the scheme\'s dispute resolution service.'},
+    {id:'sigs',name:'Signatures',locked:false,text:'[SIGNATURE_BLOCK]'},
+   ]},
+  {id:'prescribed-info',name:'Prescribed Information',code:'PI-01',cat:'lettings',desc:'Housing Act 2004 s.213(5) / SI 2007/797 prescribed information for tenancy deposits',
+   sections:[
+    {id:'deposit-details',name:'Deposit Details',locked:false,text:'**Amount:** £{{ctx.depositAmount}}\n**Date received:** {{ctx.depositReceivedDate}}\n**Scheme:** {{ctx.depositScheme}}\n**Scheme reference:** {{ctx.depositSchemeRef}}\n**Property:** {{property.address}}'},
+    {id:'scheme-info',name:'Scheme Information',locked:true,text:'The deposit is protected under the Housing Act 2004 (as amended by the Localism Act 2011) with the {{ctx.depositScheme}}.\n\nThe scheme\'s Alternative Dispute Resolution (ADR) service is available free of charge at the end of the tenancy if there is a dispute about the deposit.\n\nFor further information about the scheme and how to make a claim, contact:\n- DPS: depositprotection.com / 0330 303 0030\n- MyDeposits: mydeposits.co.uk / 0333 321 9401\n- TDS: tenancydepositscheme.com / 0300 037 1000'},
+    {id:'deductions',name:'Deductions',locked:true,text:'The landlord may make deductions from the deposit for:\n\n1. Unpaid rent\n2. Damage beyond fair wear and tear (evidenced by inventory)\n3. Missing items (evidenced by inventory)\n4. Cleaning costs where the property is not returned in the condition recorded at check-in\n5. Any other breach of the tenancy agreement\n\nDeductions must be evidenced and agreed. If no agreement is reached, either party may refer the dispute to the scheme\'s ADR service.'},
+   ]},
+  {id:'s21',name:'Section 21 Notice (Form 6A)',code:'S21-01',cat:'lettings',desc:'Housing Act 1988 s.21 — notice requiring possession (no-fault)',
+   sections:[
+    {id:'header',name:'Notice',locked:true,text:'**HOUSING ACT 1988 — SECTION 21(1) / (4)**\n**NOTICE REQUIRING POSSESSION**\n\nTo the tenant(s): {{client.name}}\nOf the property: {{property.address}}'},
+    {id:'body',name:'Body',locked:true,text:'I/We give you notice that I/we require possession of the dwelling-house known as:\n\n{{property.address}}\n\nafter **{{ctx.noticeExpiryDate}}**.\n\nThis notice is given under section 21 of the Housing Act 1988.\n\nThe notice must expire on or after the last day of a period of the tenancy and must give at least **two months\' notice**.'},
+    {id:'prereqs',name:'Pre-requisites',locked:true,text:'This notice is not valid unless:\n\n1. The deposit has been protected in a government-approved scheme and prescribed information served\n2. A valid Gas Safety Certificate has been provided to the tenant\n3. A valid EPC has been provided to the tenant\n4. A valid EICR has been provided to the tenant\n5. The "How to Rent" guide has been provided to the tenant\n6. No improvement notice or emergency remedial action notice is outstanding (s.21 restriction under Deregulation Act 2015)\n\nThis notice is valid for **six months** from the date of service.'},
+    {id:'service',name:'Service',locked:false,text:'**Date of notice:** {{ctx.noticeDate}}\n**Date of service:** {{ctx.serviceDate}}\n**Method of service:** {{ctx.serviceMethod}}\n\n**Landlord / Agent:** {{firm.name}}\n**Address:** {{firm.address}}'},
+   ]},
+  {id:'s8',name:'Section 8 Notice',code:'S8-01',cat:'lettings',desc:'Housing Act 1988 s.8 — notice of intention to seek possession (grounds)',
+   sections:[
+    {id:'header',name:'Notice',locked:true,text:'**HOUSING ACT 1988 — SECTION 8**\n**NOTICE OF INTENTION TO COMMENCE PROCEEDINGS FOR POSSESSION**\n\nTo: {{client.name}}\nProperty: {{property.address}}'},
+    {id:'grounds',name:'Grounds',locked:false,text:'Possession is sought on the following ground(s):\n\n**Ground {{ctx.groundNumber}}** — {{ctx.groundDescription}}\n\nParticulars:\n{{ctx.groundParticulars}}'},
+    {id:'notice-period',name:'Notice Period',locked:true,text:'The notice period depends on the ground(s) relied upon:\n- Grounds 1, 2, 5-7, 9, 16: 2 months\n- Ground 3: expiry of current term\n- Grounds 8, 10-15, 17: 2 weeks\n- Ground 7A (anti-social behaviour): 4 weeks\n- Ground 14 (nuisance): immediate\n\nThe court will not entertain proceedings until the notice period has expired.'},
+    {id:'service',name:'Service',locked:false,text:'**Date of notice:** {{ctx.noticeDate}}\n**Earliest court proceedings date:** {{ctx.proceedingsDate}}\n**Landlord / Agent:** {{firm.name}}'},
+   ]},
+  {id:'s13',name:'Section 13 Rent Increase',code:'S13-01',cat:'lettings',desc:'Housing Act 1988 s.13 — notice proposing new rent',
+   sections:[
+    {id:'notice',name:'Notice',locked:true,text:'**HOUSING ACT 1988 — SECTION 13(2)**\n**NOTICE PROPOSING A NEW RENT**\n\nTo: {{client.name}}\nProperty: {{property.address}}\n\nI/We propose that the rent for the above property be increased to:\n\n**£{{ctx.newRent}} per calendar month**\n\nfrom **{{ctx.rentIncreaseDate}}**.\n\nThis notice must give at least one month\'s notice for a monthly tenancy (or six months for a yearly tenancy). It cannot take effect within the first year of the tenancy or within one year of a previous s.13 increase.'},
+    {id:'tribunal',name:'Tribunal Rights',locked:true,text:'If you disagree with the proposed rent, you may apply to the First-tier Tribunal (Property Chamber) before the effective date. The tribunal will determine a market rent.\n\n**Warning:** The tribunal may set a rent higher than the proposed amount.'},
+    {id:'service',name:'Service',locked:false,text:'**Date of notice:** {{ctx.noticeDate}}\n**Landlord / Agent:** {{firm.name}}, {{firm.address}}'},
+   ]},
+  {id:'inventory',name:'Inventory & Check-In',code:'INV-01',cat:'lettings',desc:'Room-by-room inventory with condition notes',
+   sections:[
+    {id:'header',name:'Header',locked:false,text:'**INVENTORY AND SCHEDULE OF CONDITION**\n\nProperty: {{property.address}}\nDate of check-in: {{ctx.checkInDate}}\nTenant: {{client.name}}\nClerk: {{ctx.clerkName}}'},
+    {id:'rooms',name:'Rooms',locked:false,text:'**Living Room**\nWalls: \nCeiling: \nFlooring: \nWindows: \nLighting: \nFurniture: \n\n**Kitchen**\nWalls: \nAppliances: \nWorktops: \nCupboards: \nFlooring: \n\n**Bedroom 1**\nWalls: \nFlooring: \nFurniture: \n\n**Bathroom**\nWalls: \nSuite: \nFlooring: \n\n**Hallway / Other**\nCondition: '},
+    {id:'meters',name:'Meter Readings',locked:false,text:'**Electricity:** {{ctx.elecReading}} (meter no: {{ctx.elecMeter}})\n**Gas:** {{ctx.gasReading}} (meter no: {{ctx.gasMeter}})\n**Water:** {{ctx.waterReading}}'},
+    {id:'keys',name:'Keys',locked:false,text:'Keys provided: {{ctx.keysProvided}}\nAlarm code: {{ctx.alarmCode}}'},
+    {id:'sigs',name:'Signatures',locked:false,text:'[SIGNATURE_BLOCK]'},
+   ]},
+  {id:'inspection',name:'Property Inspection Report',code:'INS-01',cat:'lettings',desc:'Periodic mid-tenancy inspection report',
+   sections:[
+    {id:'header',name:'Header',locked:false,text:'**PROPERTY INSPECTION REPORT**\n\nProperty: {{property.address}}\nDate: {{ctx.inspectionDate}}\nInspector: {{ctx.inspectorName}}\nTenant: {{client.name}}'},
+    {id:'findings',name:'Findings',locked:false,text:'**General condition:** {{ctx.generalCondition}}\n\n**Issues identified:**\n{{ctx.issuesFound}}\n\n**Maintenance required:**\n{{ctx.maintenanceRequired}}'},
+    {id:'tenant-conduct',name:'Tenant Conduct',locked:false,text:'**Garden/exterior:** {{ctx.gardenCondition}}\n**Cleanliness:** {{ctx.cleanlinessRating}}\n**Lease compliance:** {{ctx.leaseCompliance}}'},
+    {id:'photos',name:'Photo Log',locked:false,text:'Photos taken: {{ctx.photoCount}}\nStored at: {{ctx.photoLocation}}'},
+   ]},
+];
+
+let state={active:'templates',firm:null,clients:[],documents:[],audit:[],
+  ui:{selectedTemplate:null,selectedClient:null,editingSections:{},extraContext:'',chat:[]},
+  settings:{anthropicKey:'',auditChain:true,autoBroadcast:true},
+};
+
+const $=(s,p=document)=>p.querySelector(s);const $$=(s,p=document)=>Array.from(p.querySelectorAll(s));
+const uid=p=>(p||'')+'_'+Math.random().toString(36).slice(2,11);
+const now=()=>Date.now();
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const moneyP=n=>'£'+(+n||0).toLocaleString('en-GB',{minimumFractionDigits:2,maximumFractionDigits:2});
+const dateStr=ts=>{if(!ts)return '—';return new Date(ts).toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'})};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(t._to);t._to=setTimeout(()=>t.classList.remove('show'),1900)}
+async function sha256(s){const buf=new TextEncoder().encode(s);const h=await crypto.subtle.digest('SHA-256',buf);return Array.from(new Uint8Array(h)).map(b=>b.toString(16).padStart(2,'0')).join('')}
+
+let db;
+function openDB(){return new Promise((res,rej)=>{const r=indexedDB.open(STORE,1);r.onupgradeneeded=e=>{const d=e.target.result;['state','audit','clients','firms','documents'].forEach(s=>{if(!d.objectStoreNames.contains(s))d.createObjectStore(s,{keyPath:s==='state'?undefined:'id'})})};r.onsuccess=e=>{db=e.target.result;res(db)};r.onerror=rej})}
+function idbGetAll(s){return new Promise(res=>{const tx=db.transaction(s,'readonly');const q=tx.objectStore(s).getAll();q.onsuccess=()=>res(q.result||[]);q.onerror=()=>res([])})}
+function idbGet(s,k){return new Promise(res=>{const tx=db.transaction(s,'readonly');const q=tx.objectStore(s).get(k);q.onsuccess=()=>res(q.result);q.onerror=()=>res(null)})}
+function idbPut(s,v,k){return new Promise(res=>{const tx=db.transaction(s,'readwrite');const o=tx.objectStore(s);const q=k!=null?o.put(v,k):o.put(v);q.onsuccess=()=>res(true);q.onerror=()=>res(false)})}
+
+async function loadAll(){if(!db)await openDB();const[firms,clients,docs,auditArr,uiState]=await Promise.all([idbGetAll('firms'),idbGetAll('clients'),idbGetAll('documents'),idbGetAll('audit'),idbGet('state','ui')]);state.firm=firms[0]||null;state.clients=clients;state.documents=docs;state.audit=auditArr.sort((a,b)=>a.i-b.i);if(uiState){state.ui=Object.assign({},state.ui,uiState.value||{});state.settings=Object.assign({},state.settings,uiState.settings||{});}}
+async function persistUI(){if(!db)await openDB();await idbPut('state',{value:{...state.ui},settings:state.settings},'ui')}
+async function auditLog(action,opts={}){if(!state.settings.auditChain)return;const prev=state.audit.length?state.audit[state.audit.length-1]:null;const prevHash=prev?prev.docHash:'';const i=(prev?prev.i:0)+1;const entry={id:uid('au'),i,ts:now(),tool:TOOLNAME,action,reasoning:opts.reasoning||'',configVersion:TOOLNAME+'@'+VERSION,prevHash,docHash:'',payload:opts.payload||{}};entry.docHash=await sha256(JSON.stringify({i,ts:entry.ts,action,prevHash,payload:entry.payload}));state.audit.push(entry);await idbPut('audit',entry);}
+
+let bcEstate,bcSignal;
+function initMesh(){try{bcSignal=new BroadcastChannel('fall-signal');bcSignal.postMessage({source:TOOLNAME,type:'hello',prime:PRIME,version:VERSION,ts:now()})}catch(e){}try{bcEstate=new BroadcastChannel('fall-estate');bcEstate.addEventListener('message',async e=>{const m=e.data;if(!m||m.source===TOOLNAME)return;if(m.type==='sync.snapshot'){const p=m.payload||{};if(Array.isArray(p.clients))for(const c of p.clients){if(!state.clients.find(x=>x.id===c.id)){state.clients.push(c);await idbPut('clients',c);}}if(p.firm&&!state.firm){state.firm=p.firm;await idbPut('firms',p.firm);}render();}});bcEstate.postMessage({v:1,type:'sync.request',ts:now(),source:TOOLNAME})}catch(e){}}
+
+// Template engine
+function buildContext(){
+  const f=state.firm||{};const cl=state.ui.selectedClient?state.clients.find(c=>c.id===state.ui.selectedClient):null;
+  const map={'firm.name':f.name||'','firm.address':f.address||'','firm.email':f.email||'','firm.phone':f.phone||'','firm.hmrcAmlRef':f.hmrcAmlRef||'','firm.cmpScheme':f.cmpScheme||'','firm.redressScheme':f.redressScheme||''};
+  if(cl){map['client.name']=((cl.title||'')+' '+(cl.firstName||'')+' '+(cl.lastName||'')).trim();map['client.address']=cl.address||'';map['client.email']=cl.email||'';map['client.phone']=cl.phone||'';
+    map['property.address']=cl.propertyAddress||cl.address||'';map['property.rent']=cl.rent||'';map['property.price']=cl.annualIncome||'';}
+  const extra=(state.ui.extraContext||'').split('\n');for(const line of extra){const eq=line.indexOf('=');if(eq>0){const k='ctx.'+line.slice(0,eq).trim();map[k]=line.slice(eq+1).trim();}}
+  return map;
+}
+function resolveText(text,ctx){return text.replace(/\{\{([^}]+)\}\}/g,(_,key)=>{const v=ctx[key.trim()];return v!=null&&v!==''?String(v):`<span class="placeholder-empty">{{${key.trim()}}}</span>`;});}
+function renderPaper(tpl,ctx,sections){
+  const rendered=sections.map(s=>{const text=state.ui.editingSections?.[s.id]??s.text;const html=resolveText(text,ctx);if(s.locked)return `<div class="clause-locked">${markdownBasic(html)}</div>`;return markdownBasic(html);}).join('\n');
+  return `<div class="doc-meta">${esc(tpl.name)} · ${esc(tpl.code)} · ${TOOLNAME} · ${dateStr(now())}</div>\n${rendered}`;
+}
+function markdownBasic(md){return md.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\n\n/g,'</p><p>').replace(/\n(\d+\.\s)/g,'<br>$1').replace(/\n-\s/g,'<br>• ').replace(/\[SIGNATURE_BLOCK\]/g,'<div class="sig-block"><div><div class="sig-line"></div>Signed (Party 1)</div><div><div class="sig-line"></div>Signed (Party 2)</div></div>').replace(/^/,'<p>').replace(/$/,'</p>');}
+
+// RENDER
+function render(){renderTabs();const v=$('#view');switch(state.active){case 'templates':return renderTemplates(v);case 'generate':return renderGenerate(v);case 'documents':return renderDocuments(v);case 'firm':return renderFirm(v);case 'clients':return renderClients(v);case 'qa':return renderQA(v);}}
+function renderTabs(){$('#tabNav').innerHTML=TABS.map(t=>`<button class="${state.active===t.id?'active':''}" onclick="switchTab('${t.id}')">${t.label}</button>`).join('');}
+function switchTab(id){state.active=id;persistUI();render();}
+
+function renderTemplates(v){
+  const sales=TEMPLATE_DEFS.filter(t=>t.cat==='sales');const lettings=TEMPLATE_DEFS.filter(t=>t.cat==='lettings');
+  v.innerHTML=`<div class="disclaimer"><strong>◊ Regulatory notice:</strong> FallEstatePaper generates documents shaped by UK property law (Housing Act 1988/2004, Estate Agents Act 1979, Deregulation Act 2015). Templates contain statutory wording that is locked. Editable sections are the firm's responsibility. This tool does not replace legal advice. Data never leaves this device.</div>
+    <div class="section-h"><h2>Templates</h2><div class="sub">${TEMPLATE_DEFS.length} templates</div></div>
+    <h3 style="font-family:var(--serif);margin-bottom:10px;color:var(--brass)">Sales</h3>
+    <div class="tpl-list" style="margin-bottom:22px">${sales.map(t=>`<div class="tpl-row" onclick="selectTemplate('${t.id}')"><div><div class="nm">${esc(t.name)}</div><div class="sub">${esc(t.code)} · ${esc(t.desc)}</div></div><div class="sub">${t.sections.length} sections</div></div>`).join('')}</div>
+    <h3 style="font-family:var(--serif);margin-bottom:10px;color:var(--brass)">Lettings</h3>
+    <div class="tpl-list">${lettings.map(t=>`<div class="tpl-row" onclick="selectTemplate('${t.id}')"><div><div class="nm">${esc(t.name)}</div><div class="sub">${esc(t.code)} · ${esc(t.desc)}</div></div><div class="sub">${t.sections.length} sections</div></div>`).join('')}</div>`;
+}
+function selectTemplate(id){state.ui.selectedTemplate=id;state.ui.editingSections={};state.active='generate';persistUI();render();}
+
+function renderGenerate(v){
+  const tpl=TEMPLATE_DEFS.find(t=>t.id===state.ui.selectedTemplate);
+  if(!tpl){v.innerHTML='<div class="empty"><h3>Select a template</h3><p>Go to Templates tab to choose one.</p></div>';return;}
+  const ctx=buildContext();
+  v.innerHTML=`<div class="section-h"><h2>${esc(tpl.name)}</h2><div class="actions"><button class="btn brass sm" onclick="saveDocument('draft')">Save draft</button><button class="btn primary sm" onclick="saveDocument('issued')">Issue</button><button class="btn ghost sm" onclick="printDoc()">Print</button></div></div>
+    <div class="doc-stage">
+      <div class="doc-side">
+        <div class="card"><h3>Client</h3><select id="clientSelect" style="width:100%" onchange="state.ui.selectedClient=this.value;persistUI();render()"><option value="">— select —</option>${state.clients.map(c=>`<option value="${c.id}" ${state.ui.selectedClient===c.id?'selected':''}>${esc(((c.title||'')+' '+(c.firstName||'')+' '+(c.lastName||'')).trim()||c.id.slice(0,8))}</option>`).join('')}</select></div>
+        <div class="card"><h3>Extra Context</h3><textarea id="ctxArea" rows="6" style="width:100%;font-size:11px" oninput="state.ui.extraContext=this.value">${esc(state.ui.extraContext||'')}</textarea><div class="field"><div class="hint">key=value per line · e.g. commissionRate=1.5%</div></div></div>
+        <div class="card"><h3>Sections</h3>${tpl.sections.map(s=>`<div class="section-edit ${s.locked?'locked':''}"><div class="hd"><span class="nm">${esc(s.name)}</span><span class="tg">${s.locked?'locked':'editable'}</span></div><textarea rows="4" ${s.locked?'readonly':''} onchange="state.ui.editingSections['${s.id}']=this.value;renderPreview()">${esc(state.ui.editingSections?.[s.id]??s.text)}</textarea></div>`).join('')}</div>
+      </div>
+      <div><div class="paper" id="paperPreview">${renderPaper(tpl,ctx,tpl.sections)}</div></div>
+    </div>`;
+}
+function renderPreview(){const tpl=TEMPLATE_DEFS.find(t=>t.id===state.ui.selectedTemplate);if(!tpl)return;const ctx=buildContext();const pp=$('#paperPreview');if(pp)pp.innerHTML=renderPaper(tpl,ctx,tpl.sections);}
+
+async function saveDocument(status){
+  const tpl=TEMPLATE_DEFS.find(t=>t.id===state.ui.selectedTemplate);if(!tpl){toast('No template');return;}
+  const ctx=buildContext();const content=renderPaper(tpl,ctx,tpl.sections);const hash=await sha256(content);
+  const doc={id:uid('doc'),templateId:tpl.id,templateName:tpl.name,code:tpl.code,clientId:state.ui.selectedClient||'',status,content,hash:hash.slice(0,16),createdAt:now(),updatedAt:now(),sections:{...state.ui.editingSections},extraContext:state.ui.extraContext||''};
+  state.documents.push(doc);await idbPut('documents',doc);
+  await auditLog('document.'+status,{reasoning:tpl.name,payload:{docId:doc.id,hash:doc.hash}});
+  toast(status==='issued'?'Document issued':'Draft saved');persistUI();render();
+}
+function printDoc(){const pp=$('#paperPreview');if(!pp)return;const w=window.open('','_blank');w.document.write('<!DOCTYPE html><html><head><title>Print</title><style>body{font-family:Georgia,serif;font-size:13px;line-height:1.7;padding:40px 60px;color:#1a1611}h1{font-size:22px;text-align:center}h2{font-size:16px;border-bottom:1px solid #ccc;padding-bottom:4px;margin-top:22px}strong{font-weight:700}.clause-locked{background:#f5f0e0;border-left:3px solid #8b1a1a;padding:8px 12px;margin:8px 0;font-size:12px}.sig-block{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:30px}.sig-line{border-bottom:1px solid #000;min-height:38px;margin-bottom:4px}@media print{body{padding:20px}}</style></head><body>'+pp.innerHTML+'</body></html>');w.document.close();w.print();}
+
+function renderDocuments(v){
+  const docs=state.documents.sort((a,b)=>b.createdAt-a.createdAt);
+  v.innerHTML=`<div class="section-h"><h2>Documents</h2><div class="sub">${docs.length} total</div></div>
+    ${docs.length?`<table><thead><tr><th>Date</th><th>Template</th><th>Code</th><th>Status</th><th>Hash</th></tr></thead><tbody>${docs.map(d=>`<tr><td>${dateStr(d.createdAt)}</td><td>${esc(d.templateName)}</td><td>${esc(d.code)}</td><td><span class="pill ${d.status}">${d.status}</span></td><td style="font-family:var(--mono);font-size:10px;color:var(--cream-muted)">${esc(d.hash)}</td></tr>`).join('')}</tbody></table>`:'<div class="empty"><h3>No documents</h3><p>Generate one from the Templates tab.</p></div>'}`;
+}
+
+function renderFirm(v){const f=state.firm||{};
+  v.innerHTML=`<div class="section-h"><h2>Firm Setup</h2></div><div class="card" style="max-width:620px">
+    <div class="row"><div class="field"><label>Firm name</label><input id="fName" value="${esc(f.name||'')}"></div><div class="field"><label>Email</label><input id="fEmail" value="${esc(f.email||'')}"></div></div>
+    <div class="field"><label>Address</label><input id="fAddr" value="${esc(f.address||'')}"></div>
+    <div class="row"><div class="field"><label>Phone</label><input id="fPhone" value="${esc(f.phone||'')}"></div><div class="field"><label>HMRC AML ref</label><input id="fAml" value="${esc(f.hmrcAmlRef||'')}"></div></div>
+    <button class="btn brass" onclick="saveFirmForm()" style="margin-top:8px">Save</button>
+  </div>`;
+}
+async function saveFirmForm(){const f=state.firm||{id:uid('firm'),ts:now()};f.name=$('#fName').value.trim();f.email=$('#fEmail').value.trim();f.address=$('#fAddr').value.trim();f.phone=$('#fPhone').value.trim();f.hmrcAmlRef=$('#fAml').value.trim();f.updatedAt=now();state.firm=f;await idbPut('firms',f);await auditLog('firm.saved');toast('Firm saved');render();}
+
+function renderClients(v){
+  v.innerHTML=`<div class="section-h"><h2>Clients</h2><div class="sub">${state.clients.length}</div></div>
+    ${state.clients.length?`<table><thead><tr><th>Name</th><th>Type</th><th>Property</th></tr></thead><tbody>${state.clients.map(c=>`<tr><td>${esc(((c.title||'')+' '+(c.firstName||'')+' '+(c.lastName||'')).trim()||c.id.slice(0,8))}</td><td>${esc(c.clientType||'—')}</td><td>${esc(c.propertyAddress||c.address||'—')}</td></tr>`).join('')}</tbody></table>`:'<div class="empty"><h3>No clients</h3><p>Clients sync from fallestateonboard via BroadcastChannel.</p></div>'}`;
+}
+
+// Q&A
+const T0_QA=[
+  {q:/ast|shorthold|tenancy agreement/i,a:'An AST (Assured Shorthold Tenancy) is the default tenancy type in England under the Housing Act 1988. The agreement must include: parties, property address, rent amount and frequency, deposit amount and scheme, term dates, tenant and landlord obligations. Statutory requirements: gas safety cert, EPC (E+), EICR, How to Rent guide, deposit protection + prescribed info within 30 days.'},
+  {q:/s(ection)?.?21|form 6a|no.?fault/i,a:'Section 21 notice (Form 6A) requires possession with at least 2 months\' notice. Pre-requisites: deposit protected + prescribed info served, gas safety cert, EPC, EICR, and How to Rent guide provided. Cannot serve during first 4 months of the first tenancy. Valid for 6 months. Deregulation Act 2015 restrictions apply if improvement notice outstanding.'},
+  {q:/s(ection)?.?8|grounds|possession/i,a:'Section 8 notice specifies grounds for possession (Schedule 2, Housing Act 1988). Mandatory grounds (court must grant): Ground 8 (2+ months rent arrears). Discretionary grounds: Ground 10 (some rent arrears), Ground 11 (persistent delay), Ground 12 (breach of obligation), Ground 14 (nuisance). Notice periods vary by ground: 2 weeks to 2 months.'},
+  {q:/deposit|protect|prescribed/i,a:'Housing Act 2004: tenancy deposits must be protected in DPS, MyDeposits, or TDS within 30 days. Prescribed information (SI 2007/797) must be served within 30 days. Failure: 1-3x deposit penalty, cannot serve valid s.21. Deposit capped at 5 weeks\' rent for ASTs where annual rent <£50k (Tenant Fees Act 2019).'},
+  {q:/sole.?agency|multi.?agency|ea.?1979/i,a:'Estate Agents Act 1979 s.18 requires agents to explain the effect of the agency terms. Sole agency: commission payable if ANY agent sells (but not if vendor sells privately). Sole selling rights: commission payable even if vendor sells privately. Multi-agency: commission only to introducing agent. The EA 1979 wording must be included in the agreement.'},
+  {q:/s(ection)?.?13|rent increase/i,a:'Section 13 notice proposes new rent for periodic tenancies. Must give 1 month notice (monthly tenancy) or 6 months (yearly). Cannot take effect in first year or within 1 year of last s.13 increase. Tenant can refer to First-tier Tribunal, which sets a market rent (which may be higher than proposed).'},
+  {q:/inventory|check.?in|condition/i,a:'A detailed inventory at check-in is essential for deposit disputes. Record condition of every room: walls, floors, ceilings, fixtures, appliances. Include meter readings, key counts, and alarm codes. Photograph everything. Both parties should sign. At check-out, compare against the inventory. Evidence is critical for ADR claims.'},
+  {q:/memo|memorandum.?of.?sale/i,a:'Memorandum of Sale confirms agreed sale terms and is sent to both solicitors. Not legally binding — sale is subject to contract until exchange. Should include: property address, agreed price, vendor and buyer details, both solicitors\' details, tenure, chain position, target dates. Agent issues this as soon as an offer is accepted.'},
+];
+function askT0(q){for(const r of T0_QA){if(r.q.test(q))return {answer:r.a,source:'T0 · UK property law rules'};}return null;}
+async function askT3(q){if(!state.settings.anthropicKey)return null;try{const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'x-api-key':state.settings.anthropicKey,'anthropic-version':'2023-06-01','content-type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:600,messages:[{role:'user',content:'You are a UK property law expert for estate and letting agents. Answer concisely.\n\n'+q}]})});if(!res.ok)return null;const json=await res.json();return {answer:json.content?.[0]?.text,source:'T3 · Anthropic'};}catch(e){return null;}}
+function renderQA(v){v.innerHTML=`<div class="section-h"><h2>Q & A</h2><div class="sub">T0 + T3 BYOK</div></div><div class="card" style="max-width:780px"><div class="chat" id="chatBox">${(state.ui.chat||[]).map(m=>`<div class="msg ${m.role}">${esc(m.text)}${m.source?`<div class="src">${esc(m.source)}</div>`:''}</div>`).join('')}</div><div class="chat-input"><input id="chatIn" placeholder="Ask…" onkeydown="if(event.key==='Enter')askQuestion()"><button class="btn brass" onclick="askQuestion()">Ask</button></div></div>`;const box=$('#chatBox');if(box)box.scrollTop=box.scrollHeight;}
+async function askQuestion(){const inp=$('#chatIn');if(!inp)return;const q=inp.value.trim();if(!q)return;inp.value='';if(!state.ui.chat)state.ui.chat=[];state.ui.chat.push({role:'user',text:q});render();let r=askT0(q);if(!r)r=await askT3(q);state.ui.chat.push(r?{role:'bot',text:r.answer,source:r.source}:{role:'bot',text:'No T0 match. Add BYOK key in Settings.',source:'system'});persistUI();render();}
+
+// Modal
+function openModal(type){const modal=$('#modal');const title=$('#modalTitle');const body=$('#modalBody');modal.classList.add('open');
+  if(type==='settings'){title.textContent='Settings';body.innerHTML=`<div class="field"><label>Anthropic key (T3)</label><input type="password" id="sAnthro" value="${esc(state.settings.anthropicKey||'')}"></div><div style="margin:10px 0"><label style="font-size:12px"><input type="checkbox" id="sAudit" ${state.settings.auditChain?'checked':''}> Audit chain</label></div><div class="actions"><button class="btn ghost sm" onclick="exportAll()">Export</button><button class="btn ghost sm" onclick="importAll()">Import</button><button class="btn danger sm" onclick="wipeAll()">Wipe</button><button class="btn brass" onclick="saveSettings()">Save</button><button class="btn ghost" onclick="closeModal()">Cancel</button></div>`;}
+}
+function closeModal(){$('#modal').classList.remove('open');}
+function saveSettings(){state.settings.anthropicKey=$('#sAnthro').value.trim();state.settings.auditChain=$('#sAudit').checked;$('#tierBadge').textContent=state.settings.anthropicKey?'T3':'T0';persistUI();closeModal();toast('Saved');render();}
+function exportAll(){const d={tool:TOOLNAME,v:VERSION,ts:now(),firm:state.firm,clients:state.clients,documents:state.documents};const b=new Blob([JSON.stringify(d,null,2)],{type:'application/json'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download='fallestatepaper-export.json';a.click();URL.revokeObjectURL(u);toast('Exported');}
+function importAll(){const inp=document.createElement('input');inp.type='file';inp.accept='.json';inp.onchange=async()=>{const f=inp.files[0];if(!f)return;try{const d=JSON.parse(await f.text());if(d.firm){state.firm=d.firm;await idbPut('firms',d.firm);}for(const k of['clients','documents']){if(Array.isArray(d[k]))for(const r of d[k]){state[k].push(r);await idbPut(k,r);}}persistUI();toast('Imported');render();}catch(e){toast('Failed');}};inp.click();}
+async function wipeAll(){if(!confirm('Wipe ALL data?'))return;for(const s of['firms','clients','documents','audit','state']){const tx=db.transaction(s,'readwrite');tx.objectStore(s).clear();await new Promise(r=>{tx.oncomplete=r;});}location.reload();}
+
+// Demo
+async function seedDemo(){if(state.clients.length||state.firm)return;
+  const firm={id:uid('firm'),name:'Demo Estates & Lettings',address:'5 High Street, London SW1A 2AA',email:'info@demoestates.co.uk',phone:'020 7456 7890',hmrcAmlRef:'XMLR00012345',cmpScheme:'DPS',redressScheme:'PRS',updatedAt:now(),isDemo:true};
+  state.firm=firm;await idbPut('firms',firm);
+  const t={id:uid('cl'),clientType:'tenant',title:'Ms',firstName:'Emma',lastName:'Clarke',address:'18 Oak Road, London',postcode:'SE1 4QR',propertyAddress:'Flat 3, 22 Elm Street, London SE1 5AB',rent:1400,email:'emma.clarke@email.co.uk',phone:'07700 900789',ts:now(),updatedAt:now(),isDemo:true};
+  const b={id:uid('cl'),clientType:'buyer',title:'Mr',firstName:'Richard',lastName:'Osei',address:'12 Maple Ave, London',postcode:'N1 2XY',propertyAddress:'',email:'r.osei@email.co.uk',phone:'07700 900456',ts:now(),updatedAt:now(),isDemo:true};
+  state.clients.push(t,b);await idbPut('clients',t);await idbPut('clients',b);
+  await auditLog('demo.seeded',{reasoning:'first boot'});await persistUI();
+}
+
+(async function boot(){try{await openDB();await loadAll();await seedDemo();initMesh();$('#tierBadge').textContent=state.settings.anthropicKey?'T3':'T0';render();}catch(e){console.error('[fallestatepaper] boot error:',e);document.getElementById('view').innerHTML='<div class="empty"><h3>Boot error</h3><p>'+esc(e.message)+'</p></div>';}})();
