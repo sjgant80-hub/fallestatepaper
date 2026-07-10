@@ -803,7 +803,26 @@ async function saveDocument(status){
   await auditLog('document.'+status,{reasoning:tpl.name,payload:{docId:doc.id,hash:doc.hash}});
   toast(status==='issued'?'Document issued':'Draft saved');persistUI();render();
 }
-function printDoc(){const pp=$('#paperPreview');if(!pp)return;const w=window.open('','_blank');w.document.write('<!DOCTYPE html><html><head><title>Print</title><style>body{font-family:Georgia,serif;font-size:13px;line-height:1.7;padding:40px 60px;color:#1a1611}h1{font-size:22px;text-align:center}h2{font-size:16px;border-bottom:1px solid #ccc;padding-bottom:4px;margin-top:22px}strong{font-weight:700}.clause-locked{background:#f5f0e0;border-left:3px solid #8b1a1a;padding:8px 12px;margin:8px 0;font-size:12px}.sig-block{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:30px}.sig-line{border-bottom:1px solid #000;min-height:38px;margin-bottom:4px}@media print{body{padding:20px}}</style></head><body>'+pp.innerHTML+'</body></html>');w.document.close();w.print();}
+function printDoc(){const pp=$('#paperPreview');if(!pp)return;const w=window.open('','_blank');w.document.write('<!DOCTYPE html><html><head><title>Print</title><style>body{font-family:Georgia,serif;font-size:13px;line-height:1.7;padding:40px 60px;color:#1a1611}h1{font-size:22px;text-align:center}h2{font-size:16px;border-bottom:1px solid #ccc;padding-bottom:4px;margin-top:22px}strong{font-weight:700}.clause-locked{background:#f5f0e0;border-left:3px solid #8b1a1a;padding:8px 12px;margin:8px 0;font-size:12px}.sig-block{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:30px}.sig-line{border-bottom:1px solid #000;min-height:38px;margin-bottom:4px}@media print{body{padding:20px}}</style></head><body>'+pp.innerHTML+'
+
+<!-- ═══════════════════════ AUTOPILOT · fall-autopilot-kit ═══════════════════════ -->
+<script type="module">
+  try {
+    const { installAutopilot } = await import('https://sjgant80-hub.github.io/fall-autopilot-kit/src/autopilot.js');
+    const manifestRes = await fetch('https://sjgant80-hub.github.io/fall-autopilot-kit/manifests/fallestatepaper.json');
+    const manifest = await manifestRes.json();
+    manifest.actions = manifest.actions.map(a => ({ ...a, run: async (params) => {
+      const fn = window._app?.[a.id];
+      if (typeof fn === 'function') return fn(params);
+      alert('Autopilot proposes: ' + a.name + ' · params: ' + JSON.stringify(params) + '\n\nThis tool has not yet implemented the ' + a.id + ' handler. Proposal logged to audit.');
+      return { stub: true, action: a.id, params };
+    }}));
+    manifest.state = () => ({ ...(window._app || {}), now: new Date().toISOString() });
+    installAutopilot(manifest);
+  } catch (e) { console.warn('[autopilot] init failed:', e); }
+</script>
+
+</body></html>');w.document.close();w.print();}
 
 function renderDocuments(v){
   const docs=state.documents.sort((a,b)=>b.createdAt-a.createdAt);
