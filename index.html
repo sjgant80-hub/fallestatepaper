@@ -229,22 +229,19 @@ td.r{text-align:right;font-family:var(--mono)}
     'llama-3b':  { id: 'Llama-3.2-3B-Instruct-q4f16_1-MLC',   size: '~2GB',   label: '3B · balanced · default · most laptops' },
     'qwen-7b':   { id: 'Qwen2.5-7B-Instruct-q4f16_1-MLC',     size: '~5GB',   label: '7B · capable · needs decent GPU (M-series Mac / 8GB+ VRAM)' },
     'llama-8b':  { id: 'Llama-3.1-8B-Instruct-q4f16_1-MLC',   size: '~5GB',   label: '8B · common · needs decent GPU' },
-    'llama-70b': { id: 'Llama-3.1-70B-Instruct-q4f16_1-MLC',  size: '~40GB',  label: '70B · frontier · needs serious GPU + 64GB+ RAM' },
-  };
+    'llama-70b': { id: 'Llama-3.1-70B-Instruct-q4f16_1-MLC',  size: '~40GB',  label: '70B · frontier · needs serious GPU + 64GB+ RAM' }};
   const DEFAULT_MODEL = 'llama-3b';
 
   const T3_PROVIDERS = {
     anthropic: { label: 'Anthropic Claude', models: ['claude-sonnet-4-5','claude-opus-4-7','claude-haiku-4-5'], default: 'claude-sonnet-4-5', url: 'https://api.anthropic.com/v1/messages' },
     openai:    { label: 'OpenAI',           models: ['gpt-4o','gpt-4o-mini','o1-mini'],                          default: 'gpt-4o-mini',      url: 'https://api.openai.com/v1/chat/completions' },
-    google:    { label: 'Google Gemini',    models: ['gemini-1.5-pro','gemini-1.5-flash','gemini-2.0-flash-exp'], default: 'gemini-1.5-flash', url: 'https://generativelanguage.googleapis.com/v1beta/models/' },
-  };
+    google:    { label: 'Google Gemini',    models: ['gemini-1.5-pro','gemini-1.5-flash','gemini-2.0-flash-exp'], default: 'gemini-1.5-flash', url: 'https://generativelanguage.googleapis.com/v1beta/models/' }};
 
   // ─── State ───────────────────────────────────────────────────────
   const STATE = {
     config: loadConfig(),
     ai: { ready: false, loading: false, progress: 0, engine: null, model: null },
-    mesh: { active: false, peers: new Map(), bc: null, signal: null },
-  };
+    mesh: { active: false, peers: new Map(), bc: null, signal: null }};
 
   function loadConfig() {
     try { return JSON.parse(localStorage.getItem('fall-kit.config') || '{}'); }
@@ -311,8 +308,7 @@ td.r{text-align:right;font-family:var(--mono)}
     if (tier === 'T2' && STATE.ai.ready && STATE.ai.engine) {
       const r = await STATE.ai.engine.chat.completions.create({
         messages: [{ role: 'system', content: systemPrompt }, { role: 'user', content: userMsg }],
-        max_tokens: maxTokens,
-      });
+        max_tokens: maxTokens});
       return r.choices[0].message.content;
     }
     if (tier === 'T3' && STATE.config.api_key && STATE.config.api_provider) {
@@ -329,8 +325,7 @@ td.r{text-align:right;font-family:var(--mono)}
       const r = await fetch(T3_PROVIDERS.anthropic.url, {
         method: 'POST',
         headers: { 'content-type': 'application/json', 'x-api-key': key, 'anthropic-version': '2023-06-01' },
-        body: JSON.stringify({ model, max_tokens: maxTokens, system: sys, messages: [{ role: 'user', content: msg }] }),
-      });
+        body: JSON.stringify({ model, max_tokens: maxTokens, system: sys, messages: [{ role: 'user', content: msg }] })});
       if (!r.ok) throw new Error('Anthropic ' + r.status + ': ' + (await r.text()).slice(0, 200));
       const j = await r.json();
       return j.content[0].text;
@@ -339,8 +334,7 @@ td.r{text-align:right;font-family:var(--mono)}
       const r = await fetch(T3_PROVIDERS.openai.url, {
         method: 'POST',
         headers: { 'content-type': 'application/json', 'Authorization': 'Bearer ' + key },
-        body: JSON.stringify({ model, max_tokens: maxTokens, messages: [{ role: 'system', content: sys }, { role: 'user', content: msg }] }),
-      });
+        body: JSON.stringify({ model, max_tokens: maxTokens, messages: [{ role: 'system', content: sys }, { role: 'user', content: msg }] })});
       if (!r.ok) throw new Error('OpenAI ' + r.status);
       const j = await r.json();
       return j.choices[0].message.content;
@@ -349,8 +343,7 @@ td.r{text-align:right;font-family:var(--mono)}
       const r = await fetch(T3_PROVIDERS.google.url + model + ':generateContent?key=' + encodeURIComponent(key), {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ contents: [{ role: 'user', parts: [{ text: sys + '\n\n---\n\n' + msg }] }], generationConfig: { maxOutputTokens: maxTokens } }),
-      });
+        body: JSON.stringify({ contents: [{ role: 'user', parts: [{ text: sys + '\n\n---\n\n' + msg }] }], generationConfig: { maxOutputTokens: maxTokens } })});
       if (!r.ok) throw new Error('Google ' + r.status);
       const j = await r.json();
       return j.candidates[0].content.parts[0].text;
@@ -591,8 +584,7 @@ td.r{text-align:right;font-family:var(--mono)}
     openMint: openMint,  // v1.2 · launch kcc-mint with this seed prefilled as parent
     MODELS: WEBLLM_MODELS,
     PROVIDERS: T3_PROVIDERS,
-    state: STATE,
-  };
+    state: STATE};
 })(typeof window !== 'undefined' ? window : globalThis);
 
 </script>
@@ -649,24 +641,21 @@ const TEMPLATE_DEFS=[
     {id:'terms',name:'Terms of Engagement',locked:false,text:'The Agent is appointed as **sole agent** for the sale of the above property.\n\nAgreement period: {{ctx.period}} from the date of signing.\n\nCommission rate: {{ctx.commissionRate}} of the final sale price, plus VAT where applicable.\n\nCommission becomes payable on exchange of contracts.'},
     {id:'obligations',name:'Agent Obligations',locked:false,text:'The Agent will:\n- Market the property on relevant portals (Rightmove, Zoopla, OnTheMarket)\n- Conduct accompanied or unaccompanied viewings as agreed\n- Negotiate on the vendor\'s behalf\n- Provide regular feedback on viewings and offers\n- Comply with the Estate Agents Act 1979 and Consumer Protection from Unfair Trading Regulations 2008'},
     {id:'ea1979',name:'Estate Agents Act 1979 Disclosure',locked:true,text:'In accordance with the Estate Agents Act 1979, section 18:\n\n(a) **"Sole agency"** means that if, during the period of sole agency, the vendor enters into a contract to sell the property as a result of the introduction of a buyer by any estate agent other than the Agent, the vendor will be liable to pay commission to both agents.\n\n(b) If the vendor finds a buyer without the involvement of any estate agent during the sole agency period, no commission will be payable.\n\n(c) The Agent has a duty to disclose any personal interest in the transaction.'},
-    {id:'sigs',name:'Signatures',locked:false,text:'[SIGNATURE_BLOCK]'},
-   ]},
+    {id:'sigs',name:'Signatures',locked:false,text:'[SIGNATURE_BLOCK]'}]},
   {id:'multi-agency',name:'Multi Agency Agreement',code:'MA-01',cat:'sales',desc:'Multi-agent instruction with higher commission rate',
    sections:[
     {id:'parties',name:'Parties',locked:false,text:'This agreement is made between:\n\n**Agent:** {{firm.name}}, {{firm.address}}\n\n**Client (Vendor):** {{client.name}}, {{client.address}}'},
     {id:'property',name:'Property',locked:false,text:'**Property:** {{property.address}}\n**Asking price:** £{{property.price}}'},
     {id:'terms',name:'Terms',locked:false,text:'The Agent is appointed on a **multi-agency** basis.\n\nCommission rate: {{ctx.commissionRate}} of the final sale price (plus VAT).\n\nCommission is payable to the agent who introduces the successful buyer.'},
     {id:'ea1979m',name:'EA 1979 — Multi Agency',locked:true,text:'In accordance with the Estate Agents Act 1979:\n\n**"Multi agency"** means the vendor has instructed more than one agent. Commission is payable only to the agent who introduces the buyer who subsequently exchanges contracts. If two agents claim the introduction, the vendor may be liable to pay both — please take independent legal advice.'},
-    {id:'sigs',name:'Signatures',locked:false,text:'[SIGNATURE_BLOCK]'},
-   ]},
+    {id:'sigs',name:'Signatures',locked:false,text:'[SIGNATURE_BLOCK]'}]},
   {id:'memo-of-sale',name:'Memorandum of Sale',code:'MOS-01',cat:'sales',desc:'Confirmation of agreed sale terms for solicitors',
    sections:[
     {id:'header',name:'Header',locked:false,text:'**MEMORANDUM OF SALE**\n\nDate: {{ctx.date}}\nAgent ref: {{ctx.agentRef}}'},
     {id:'property',name:'Property',locked:false,text:'**Property:** {{property.address}}'},
     {id:'parties',name:'Parties',locked:false,text:'**Vendor:** {{ctx.vendorName}}\nVendor solicitor: {{ctx.vendorSolicitor}} ({{ctx.vendorSolicitorEmail}})\n\n**Buyer:** {{client.name}}\nBuyer solicitor: {{ctx.buyerSolicitor}} ({{ctx.buyerSolicitorEmail}})'},
     {id:'terms',name:'Sale Terms',locked:false,text:'**Agreed price:** £{{ctx.agreedPrice}}\n**Tenure:** {{ctx.tenure}}\n**Fixtures/fittings:** per inventory\n**Target exchange:** {{ctx.targetExchange}}\n**Chain position:** {{ctx.chainPosition}}'},
-    {id:'note',name:'Note',locked:true,text:'This memorandum is issued for information only and does not constitute a legally binding agreement. The sale is not binding until exchange of contracts. Either party may withdraw at any time before exchange without liability.'},
-   ]},
+    {id:'note',name:'Note',locked:true,text:'This memorandum is issued for information only and does not constitute a legally binding agreement. The sale is not binding until exchange of contracts. Either party may withdraw at any time before exchange without liability.'}]},
   {id:'ast',name:'Assured Shorthold Tenancy',code:'AST-01',cat:'lettings',desc:'Housing Act 1988 / Housing Act 1996 standard AST agreement',
    sections:[
     {id:'parties',name:'Parties',locked:false,text:'**Landlord:** {{ctx.landlordName}}, {{ctx.landlordAddress}}\n\n**Tenant:** {{client.name}}\n\n**Agent:** {{firm.name}}, {{firm.address}}'},
@@ -675,55 +664,46 @@ const TEMPLATE_DEFS=[
     {id:'obligations-t',name:'Tenant Obligations',locked:true,text:'The Tenant agrees to:\n\n1. Pay the rent on or before the due date\n2. Keep the interior of the property in good condition and repair\n3. Not make any alterations without the Landlord\'s written consent\n4. Not cause nuisance or annoyance to neighbours\n5. Allow the Landlord or Agent access for inspection with at least 24 hours\' written notice\n6. Not assign, sublet, or part with possession without written consent\n7. Notify the Landlord or Agent promptly of any disrepair\n8. Comply with the terms of the EPC'},
     {id:'obligations-l',name:'Landlord Obligations',locked:true,text:'The Landlord agrees to:\n\n1. Keep the structure and exterior in repair (Landlord and Tenant Act 1985, s.11)\n2. Keep installations for water, gas, electricity, and heating in repair and proper working order\n3. Provide a valid Gas Safety Certificate (annually)\n4. Provide a valid EPC (rating E or above per MEES)\n5. Provide a valid EICR (Electrical Installation Condition Report, every 5 years)\n6. Protect the deposit in a government-approved scheme within 30 days\n7. Serve the prescribed information within 30 days\n8. Comply with the Homes (Fitness for Human Habitation) Act 2018'},
     {id:'deposit-clause',name:'Deposit Protection',locked:true,text:'The deposit of £{{ctx.depositAmount}} is held under the terms of the Housing Act 2004 in the {{ctx.depositScheme}}. Prescribed information has been served. The deposit will be returned within 10 working days of the tenancy ending, less any lawful deductions agreed by both parties or determined by the scheme\'s dispute resolution service.'},
-    {id:'sigs',name:'Signatures',locked:false,text:'[SIGNATURE_BLOCK]'},
-   ]},
+    {id:'sigs',name:'Signatures',locked:false,text:'[SIGNATURE_BLOCK]'}]},
   {id:'prescribed-info',name:'Prescribed Information',code:'PI-01',cat:'lettings',desc:'Housing Act 2004 s.213(5) / SI 2007/797 prescribed information for tenancy deposits',
    sections:[
     {id:'deposit-details',name:'Deposit Details',locked:false,text:'**Amount:** £{{ctx.depositAmount}}\n**Date received:** {{ctx.depositReceivedDate}}\n**Scheme:** {{ctx.depositScheme}}\n**Scheme reference:** {{ctx.depositSchemeRef}}\n**Property:** {{property.address}}'},
     {id:'scheme-info',name:'Scheme Information',locked:true,text:'The deposit is protected under the Housing Act 2004 (as amended by the Localism Act 2011) with the {{ctx.depositScheme}}.\n\nThe scheme\'s Alternative Dispute Resolution (ADR) service is available free of charge at the end of the tenancy if there is a dispute about the deposit.\n\nFor further information about the scheme and how to make a claim, contact:\n- DPS: depositprotection.com / 0330 303 0030\n- MyDeposits: mydeposits.co.uk / 0333 321 9401\n- TDS: tenancydepositscheme.com / 0300 037 1000'},
-    {id:'deductions',name:'Deductions',locked:true,text:'The landlord may make deductions from the deposit for:\n\n1. Unpaid rent\n2. Damage beyond fair wear and tear (evidenced by inventory)\n3. Missing items (evidenced by inventory)\n4. Cleaning costs where the property is not returned in the condition recorded at check-in\n5. Any other breach of the tenancy agreement\n\nDeductions must be evidenced and agreed. If no agreement is reached, either party may refer the dispute to the scheme\'s ADR service.'},
-   ]},
+    {id:'deductions',name:'Deductions',locked:true,text:'The landlord may make deductions from the deposit for:\n\n1. Unpaid rent\n2. Damage beyond fair wear and tear (evidenced by inventory)\n3. Missing items (evidenced by inventory)\n4. Cleaning costs where the property is not returned in the condition recorded at check-in\n5. Any other breach of the tenancy agreement\n\nDeductions must be evidenced and agreed. If no agreement is reached, either party may refer the dispute to the scheme\'s ADR service.'}]},
   {id:'s21',name:'Section 21 Notice (Form 6A)',code:'S21-01',cat:'lettings',desc:'Housing Act 1988 s.21 — notice requiring possession (no-fault)',
    sections:[
     {id:'header',name:'Notice',locked:true,text:'**HOUSING ACT 1988 — SECTION 21(1) / (4)**\n**NOTICE REQUIRING POSSESSION**\n\nTo the tenant(s): {{client.name}}\nOf the property: {{property.address}}'},
     {id:'body',name:'Body',locked:true,text:'I/We give you notice that I/we require possession of the dwelling-house known as:\n\n{{property.address}}\n\nafter **{{ctx.noticeExpiryDate}}**.\n\nThis notice is given under section 21 of the Housing Act 1988.\n\nThe notice must expire on or after the last day of a period of the tenancy and must give at least **two months\' notice**.'},
     {id:'prereqs',name:'Pre-requisites',locked:true,text:'This notice is not valid unless:\n\n1. The deposit has been protected in a government-approved scheme and prescribed information served\n2. A valid Gas Safety Certificate has been provided to the tenant\n3. A valid EPC has been provided to the tenant\n4. A valid EICR has been provided to the tenant\n5. The "How to Rent" guide has been provided to the tenant\n6. No improvement notice or emergency remedial action notice is outstanding (s.21 restriction under Deregulation Act 2015)\n\nThis notice is valid for **six months** from the date of service.'},
-    {id:'service',name:'Service',locked:false,text:'**Date of notice:** {{ctx.noticeDate}}\n**Date of service:** {{ctx.serviceDate}}\n**Method of service:** {{ctx.serviceMethod}}\n\n**Landlord / Agent:** {{firm.name}}\n**Address:** {{firm.address}}'},
-   ]},
+    {id:'service',name:'Service',locked:false,text:'**Date of notice:** {{ctx.noticeDate}}\n**Date of service:** {{ctx.serviceDate}}\n**Method of service:** {{ctx.serviceMethod}}\n\n**Landlord / Agent:** {{firm.name}}\n**Address:** {{firm.address}}'}]},
   {id:'s8',name:'Section 8 Notice',code:'S8-01',cat:'lettings',desc:'Housing Act 1988 s.8 — notice of intention to seek possession (grounds)',
    sections:[
     {id:'header',name:'Notice',locked:true,text:'**HOUSING ACT 1988 — SECTION 8**\n**NOTICE OF INTENTION TO COMMENCE PROCEEDINGS FOR POSSESSION**\n\nTo: {{client.name}}\nProperty: {{property.address}}'},
     {id:'grounds',name:'Grounds',locked:false,text:'Possession is sought on the following ground(s):\n\n**Ground {{ctx.groundNumber}}** — {{ctx.groundDescription}}\n\nParticulars:\n{{ctx.groundParticulars}}'},
     {id:'notice-period',name:'Notice Period',locked:true,text:'The notice period depends on the ground(s) relied upon:\n- Grounds 1, 2, 5-7, 9, 16: 2 months\n- Ground 3: expiry of current term\n- Grounds 8, 10-15, 17: 2 weeks\n- Ground 7A (anti-social behaviour): 4 weeks\n- Ground 14 (nuisance): immediate\n\nThe court will not entertain proceedings until the notice period has expired.'},
-    {id:'service',name:'Service',locked:false,text:'**Date of notice:** {{ctx.noticeDate}}\n**Earliest court proceedings date:** {{ctx.proceedingsDate}}\n**Landlord / Agent:** {{firm.name}}'},
-   ]},
+    {id:'service',name:'Service',locked:false,text:'**Date of notice:** {{ctx.noticeDate}}\n**Earliest court proceedings date:** {{ctx.proceedingsDate}}\n**Landlord / Agent:** {{firm.name}}'}]},
   {id:'s13',name:'Section 13 Rent Increase',code:'S13-01',cat:'lettings',desc:'Housing Act 1988 s.13 — notice proposing new rent',
    sections:[
     {id:'notice',name:'Notice',locked:true,text:'**HOUSING ACT 1988 — SECTION 13(2)**\n**NOTICE PROPOSING A NEW RENT**\n\nTo: {{client.name}}\nProperty: {{property.address}}\n\nI/We propose that the rent for the above property be increased to:\n\n**£{{ctx.newRent}} per calendar month**\n\nfrom **{{ctx.rentIncreaseDate}}**.\n\nThis notice must give at least one month\'s notice for a monthly tenancy (or six months for a yearly tenancy). It cannot take effect within the first year of the tenancy or within one year of a previous s.13 increase.'},
     {id:'tribunal',name:'Tribunal Rights',locked:true,text:'If you disagree with the proposed rent, you may apply to the First-tier Tribunal (Property Chamber) before the effective date. The tribunal will determine a market rent.\n\n**Warning:** The tribunal may set a rent higher than the proposed amount.'},
-    {id:'service',name:'Service',locked:false,text:'**Date of notice:** {{ctx.noticeDate}}\n**Landlord / Agent:** {{firm.name}}, {{firm.address}}'},
-   ]},
+    {id:'service',name:'Service',locked:false,text:'**Date of notice:** {{ctx.noticeDate}}\n**Landlord / Agent:** {{firm.name}}, {{firm.address}}'}]},
   {id:'inventory',name:'Inventory & Check-In',code:'INV-01',cat:'lettings',desc:'Room-by-room inventory with condition notes',
    sections:[
     {id:'header',name:'Header',locked:false,text:'**INVENTORY AND SCHEDULE OF CONDITION**\n\nProperty: {{property.address}}\nDate of check-in: {{ctx.checkInDate}}\nTenant: {{client.name}}\nClerk: {{ctx.clerkName}}'},
     {id:'rooms',name:'Rooms',locked:false,text:'**Living Room**\nWalls: \nCeiling: \nFlooring: \nWindows: \nLighting: \nFurniture: \n\n**Kitchen**\nWalls: \nAppliances: \nWorktops: \nCupboards: \nFlooring: \n\n**Bedroom 1**\nWalls: \nFlooring: \nFurniture: \n\n**Bathroom**\nWalls: \nSuite: \nFlooring: \n\n**Hallway / Other**\nCondition: '},
     {id:'meters',name:'Meter Readings',locked:false,text:'**Electricity:** {{ctx.elecReading}} (meter no: {{ctx.elecMeter}})\n**Gas:** {{ctx.gasReading}} (meter no: {{ctx.gasMeter}})\n**Water:** {{ctx.waterReading}}'},
     {id:'keys',name:'Keys',locked:false,text:'Keys provided: {{ctx.keysProvided}}\nAlarm code: {{ctx.alarmCode}}'},
-    {id:'sigs',name:'Signatures',locked:false,text:'[SIGNATURE_BLOCK]'},
-   ]},
+    {id:'sigs',name:'Signatures',locked:false,text:'[SIGNATURE_BLOCK]'}]},
   {id:'inspection',name:'Property Inspection Report',code:'INS-01',cat:'lettings',desc:'Periodic mid-tenancy inspection report',
    sections:[
     {id:'header',name:'Header',locked:false,text:'**PROPERTY INSPECTION REPORT**\n\nProperty: {{property.address}}\nDate: {{ctx.inspectionDate}}\nInspector: {{ctx.inspectorName}}\nTenant: {{client.name}}'},
     {id:'findings',name:'Findings',locked:false,text:'**General condition:** {{ctx.generalCondition}}\n\n**Issues identified:**\n{{ctx.issuesFound}}\n\n**Maintenance required:**\n{{ctx.maintenanceRequired}}'},
     {id:'tenant-conduct',name:'Tenant Conduct',locked:false,text:'**Garden/exterior:** {{ctx.gardenCondition}}\n**Cleanliness:** {{ctx.cleanlinessRating}}\n**Lease compliance:** {{ctx.leaseCompliance}}'},
-    {id:'photos',name:'Photo Log',locked:false,text:'Photos taken: {{ctx.photoCount}}\nStored at: {{ctx.photoLocation}}'},
-   ]},
-];
+    {id:'photos',name:'Photo Log',locked:false,text:'Photos taken: {{ctx.photoCount}}\nStored at: {{ctx.photoLocation}}'}]}];
 
 let state={active:'templates',firm:null,clients:[],documents:[],audit:[],
   ui:{selectedTemplate:null,selectedClient:null,editingSections:{},extraContext:'',chat:[]},
-  settings:{anthropicKey:'',auditChain:true,autoBroadcast:true},
-};
+  settings:{anthropicKey:'',auditChain:true,autoBroadcast:true}};
 
 const $=(s,p=document)=>p.querySelector(s);const $$=(s,p=document)=>Array.from(p.querySelectorAll(s));
 const uid=p=>(p||'')+'_'+Math.random().toString(36).slice(2,11);
@@ -761,7 +741,7 @@ function renderPaper(tpl,ctx,sections){
   const rendered=sections.map(s=>{const text=state.ui.editingSections?.[s.id]??s.text;const html=resolveText(text,ctx);if(s.locked)return `<div class="clause-locked">${markdownBasic(html)}</div>`;return markdownBasic(html);}).join('\n');
   return `<div class="doc-meta">${esc(tpl.name)} · ${esc(tpl.code)} · ${TOOLNAME} · ${dateStr(now())}</div>\n${rendered}`;
 }
-function markdownBasic(md){return md.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\n\n/g,'</p><p>').replace(/\n(\d+\.\s)/g,'<br>$1').replace(/\n-\s/g,'<br>• ').replace(/\[SIGNATURE_BLOCK\]/g,'<div class="sig-block"><div><div class="sig-line"></div>Signed (Party 1)</div><div><div class="sig-line"></div>Signed (Party 2)</div></div>').replace(/^/,'<p>').replace(/$/,'</p>');}
+function markdownBasic(md){return md.replace(/\*\*(.+?)\*\*/g,'<strong>TBA</strong>').replace(/\n\n/g,'</p><p>').replace(/\n(\d+\.\s)/g,'<br>TBA').replace(/\n-\s/g,'<br>• ').replace(/\[SIGNATURE_BLOCK\]/g,'<div class="sig-block"><div><div class="sig-line"></div>Signed (Party 1)</div><div><div class="sig-line"></div>Signed (Party 2)</div></div>').replace(/^/,'<p>').replace(/$/,'</p>');}
 
 // RENDER
 function render(){renderTabs();const v=$('#view');switch(state.active){case 'templates':return renderTemplates(v);case 'generate':return renderGenerate(v);case 'documents':return renderDocuments(v);case 'firm':return renderFirm(v);case 'clients':return renderClients(v);case 'qa':return renderQA(v);}}
@@ -852,12 +832,11 @@ const T0_QA=[
   {q:/ast|shorthold|tenancy agreement/i,a:'An AST (Assured Shorthold Tenancy) is the default tenancy type in England under the Housing Act 1988. The agreement must include: parties, property address, rent amount and frequency, deposit amount and scheme, term dates, tenant and landlord obligations. Statutory requirements: gas safety cert, EPC (E+), EICR, How to Rent guide, deposit protection + prescribed info within 30 days.'},
   {q:/s(ection)?.?21|form 6a|no.?fault/i,a:'Section 21 notice (Form 6A) requires possession with at least 2 months\' notice. Pre-requisites: deposit protected + prescribed info served, gas safety cert, EPC, EICR, and How to Rent guide provided. Cannot serve during first 4 months of the first tenancy. Valid for 6 months. Deregulation Act 2015 restrictions apply if improvement notice outstanding.'},
   {q:/s(ection)?.?8|grounds|possession/i,a:'Section 8 notice specifies grounds for possession (Schedule 2, Housing Act 1988). Mandatory grounds (court must grant): Ground 8 (2+ months rent arrears). Discretionary grounds: Ground 10 (some rent arrears), Ground 11 (persistent delay), Ground 12 (breach of obligation), Ground 14 (nuisance). Notice periods vary by ground: 2 weeks to 2 months.'},
-  {q:/deposit|protect|prescribed/i,a:'Housing Act 2004: tenancy deposits must be protected in DPS, MyDeposits, or TDS within 30 days. Prescribed information (SI 2007/797) must be served within 30 days. Failure: 1-3x deposit penalty, cannot serve valid s.21. Deposit capped at 5 weeks\' rent for ASTs where annual rent <£50k (Tenant Fees Act 2019).'},
+  {q:/deposit|protect|prescribed/i,a:'Housing Act 2004: tenancy deposits must be protected in DPS, MyDeposits, or TDS within 30 days. Prescribed information (SI 2007/797) must be served within 30 days. Failure: 1-3x deposit penalty, cannot serve valid s.21. Deposit capped at 5 weeks\' rent for ASTs where annual rent <TBAk (Tenant Fees Act 2019).'},
   {q:/sole.?agency|multi.?agency|ea.?1979/i,a:'Estate Agents Act 1979 s.18 requires agents to explain the effect of the agency terms. Sole agency: commission payable if ANY agent sells (but not if vendor sells privately). Sole selling rights: commission payable even if vendor sells privately. Multi-agency: commission only to introducing agent. The EA 1979 wording must be included in the agreement.'},
   {q:/s(ection)?.?13|rent increase/i,a:'Section 13 notice proposes new rent for periodic tenancies. Must give 1 month notice (monthly tenancy) or 6 months (yearly). Cannot take effect in first year or within 1 year of last s.13 increase. Tenant can refer to First-tier Tribunal, which sets a market rent (which may be higher than proposed).'},
   {q:/inventory|check.?in|condition/i,a:'A detailed inventory at check-in is essential for deposit disputes. Record condition of every room: walls, floors, ceilings, fixtures, appliances. Include meter readings, key counts, and alarm codes. Photograph everything. Both parties should sign. At check-out, compare against the inventory. Evidence is critical for ADR claims.'},
-  {q:/memo|memorandum.?of.?sale/i,a:'Memorandum of Sale confirms agreed sale terms and is sent to both solicitors. Not legally binding — sale is subject to contract until exchange. Should include: property address, agreed price, vendor and buyer details, both solicitors\' details, tenure, chain position, target dates. Agent issues this as soon as an offer is accepted.'},
-];
+  {q:/memo|memorandum.?of.?sale/i,a:'Memorandum of Sale confirms agreed sale terms and is sent to both solicitors. Not legally binding — sale is subject to contract until exchange. Should include: property address, agreed price, vendor and buyer details, both solicitors\' details, tenure, chain position, target dates. Agent issues this as soon as an offer is accepted.'}];
 function askT0(q){for(const r of T0_QA){if(r.q.test(q))return {answer:r.a,source:'T0 · UK property law rules'};}return null;}
 async function askT3(q){if(!state.settings.anthropicKey)return null;try{const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'x-api-key':state.settings.anthropicKey,'anthropic-version':'2023-06-01','content-type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:600,messages:[{role:'user',content:'You are a UK property law expert for estate and letting agents. Answer concisely.\n\n'+q}]})});if(!res.ok)return null;const json=await res.json();return {answer:json.content?.[0]?.text,source:'T3 · Anthropic'};}catch(e){return null;}}
 function renderQA(v){v.innerHTML=`<div class="section-h"><h2>Q & A</h2><div class="sub">T0 + T3 BYOK</div></div><div class="card" style="max-width:780px"><div class="chat" id="chatBox">${(state.ui.chat||[]).map(m=>`<div class="msg ${m.role}">${esc(m.text)}${m.source?`<div class="src">${esc(m.source)}</div>`:''}</div>`).join('')}</div><div class="chat-input"><input id="chatIn" placeholder="Ask…" onkeydown="if(event.key==='Enter')askQuestion()"><button class="btn brass" onclick="askQuestion()">Ask</button></div></div>`;const box=$('#chatBox');if(box)box.scrollTop=box.scrollHeight;}
