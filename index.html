@@ -863,3 +863,6 @@ async function seedDemo(){if(state.clients.length||state.firm)return;
 }
 
 (async function boot(){try{await openDB();await loadAll();await seedDemo();initMesh();$('#tierBadge').textContent=state.settings.anthropicKey?'T3':'T0';render();}catch(e){console.error('[fallestatepaper] boot error:',e);document.getElementById('view').innerHTML='<div class="empty"><h3>Boot error</h3><p>'+esc(e.message)+'</p></div>';}})();
+</script>
+</body>
+</html>
