@@ -1322,7 +1322,7 @@ function renderPaper(tpl,ctx,sections){
   const rendered=sections.map(s=>{const text=state.ui.editingSections?.[s.id]??s.text;const html=resolveText(text,ctx);if(s.locked)return `<div class="clause-locked">${markdownBasic(html)}</div>`;return markdownBasic(html);}).join('\n');
   return `<div class="doc-meta">${esc(tpl.name)} · ${esc(tpl.code)} · ${TOOLNAME} · ${dateStr(now())}</div>\n${rendered}`;
 }
-function markdownBasic(md){return md.replace(/\*\*(.+?)\*\*/g,'<strong>TBA</strong>').replace(/\n\n/g,'</p><p>').replace(/\n(\d+\.\s)/g,'<br>TBA').replace(/\n-\s/g,'<br>• ').replace(/\[SIGNATURE_BLOCK\]/g,'<div class="sig-block"><div><div class="sig-line"></div>Signed (Party 1)</div><div><div class="sig-line"></div>Signed (Party 2)</div></div>').replace(/^/,'<p>').replace(/$/,'</p>');}
+function markdownBasic(md){return md.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\n\n/g,'</p><p>').replace(/\n(\d+\.\s)/g,'<br>$1').replace(/\n-\s/g,'<br>• ').replace(/\[SIGNATURE_BLOCK\]/g,'<div class="sig-block"><div><div class="sig-line"></div>Signed (Party 1)</div><div><div class="sig-line"></div>Signed (Party 2)</div></div>').replace(/^/,'<p>').replace(/$/,'</p>');}
 
 // RENDER
 function render(){renderTabs();const v=$('#view');switch(state.active){case 'templates':return renderTemplates(v);case 'generate':return renderGenerate(v);case 'documents':return renderDocuments(v);case 'firm':return renderFirm(v);case 'clients':return renderClients(v);case 'qa':return renderQA(v);}}
